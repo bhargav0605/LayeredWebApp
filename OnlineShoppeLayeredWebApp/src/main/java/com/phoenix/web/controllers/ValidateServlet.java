@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.phoenix.exceptions.ServiceExceptions;
+import com.phoenix.exceptions.UserNotFoundException;
 import com.phoenix.web.models.LoginBean;
 
 /**
@@ -71,6 +73,10 @@ public class ValidateServlet extends HttpServlet {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch(IOException e) {
+			e.printStackTrace();
+		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+		} catch (ServiceExceptions e) {
 			e.printStackTrace();
 		}
 	}

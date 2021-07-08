@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import com.phoenix.daos.LoginDao;
 import com.phoenix.daos.LoginDaoImpl;
 import com.phoenix.data.User;
+import com.phoenix.exceptions.ServiceExceptions;
+import com.phoenix.exceptions.UserNotFoundException;
+import com.phoenix.services.LoginService;
+import com.phoenix.services.LoginServiceImpl;
 
 public class LoginBean {
 	
@@ -32,14 +36,12 @@ public class LoginBean {
 		this.password = password;
 	}
 	
-	public boolean isValid() {
-		LoginDao loginDao = new LoginDaoImpl();
+	public boolean isValid() throws UserNotFoundException, ServiceExceptions {
+		//LoginDao loginDao = new LoginDaoImpl();
+		LoginService loginService = new LoginServiceImpl();
 		User dbUser = null;
-		try {
-			dbUser = loginDao.getUserById(username);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		dbUser = loginService.findByUserId(username);
+		
 		
 		if(username != null && password != null
 				&& username.equals(dbUser.getUsername())
