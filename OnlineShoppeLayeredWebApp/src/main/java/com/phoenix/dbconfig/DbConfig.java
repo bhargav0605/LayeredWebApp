@@ -19,6 +19,7 @@ public class DbConfig {
 														SQLException{
 	//Load JDBC Driver
 	Class.forName(jdbcDriver);
+		//Class.forName("oracle.jdbc.driver.OracleDriver");
 	
 	//Establish connection
 	return DriverManager.getConnection(jdbcUrl, username, password);

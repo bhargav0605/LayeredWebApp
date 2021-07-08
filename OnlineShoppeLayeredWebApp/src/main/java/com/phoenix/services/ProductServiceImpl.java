@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.phoenix.daos.ProductDao;
+import com.phoenix.daos.ProductDaoImpl;
 import com.phoenix.data.Product;
 import com.phoenix.exceptions.ProductNotFoundException;
 import com.phoenix.exceptions.ServiceExceptions;
@@ -12,6 +13,10 @@ import com.phoenix.exceptions.ServiceExceptions;
 public class ProductServiceImpl implements ProductService{
 	
 	private ProductDao productDao;
+	
+	public ProductServiceImpl() {
+		productDao = new ProductDaoImpl();
+	}
 
 	@Override
 	public List<Product> findAll() throws ServiceExceptions {

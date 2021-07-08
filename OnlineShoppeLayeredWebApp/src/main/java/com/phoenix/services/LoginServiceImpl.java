@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.phoenix.daos.LoginDao;
+import com.phoenix.daos.LoginDaoImpl;
 import com.phoenix.data.User;
 import com.phoenix.exceptions.ServiceExceptions;
 import com.phoenix.exceptions.UserNotFoundException;
@@ -18,6 +19,10 @@ public class LoginServiceImpl implements LoginService{
 	
 	// DAO Interface
 	private LoginDao loginDao; 
+	
+	public LoginServiceImpl() {
+		loginDao = new LoginDaoImpl();
+	}
 
 	@Override
 	public List<User> findAll() throws ServiceExceptions {
